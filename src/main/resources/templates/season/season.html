@@ -1,0 +1,119 @@
+    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="html_head">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Quản lý giải bóng đá vô địch quốc gia</title>
+        <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" th:href="@{public/vendors/bootstrap/dist/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{public/vendors/font-awesome/css/font-awesome.min.css}">
+        <link rel="stylesheet" th:href="@{public/assets/css/style.css}">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <script th:src="@{public/vendors/jquery/dist/jquery.min.js}"></script>
+
+        <script>
+            $(document).ready(function () {
+                $("#leftPanel").load("../layouts/left-pannel.html");
+                $("#header").load("../layouts/right-panel.html");
+                $("#chinh").load("../layouts/main.html");
+                getAllSeasons(); // Gọi hàm này khi tài liệu đã sẵn sàng
+            });
+        </script>
+    </head>
+
+    <body>
+
+        <!-- Left Panel -->
+        <aside id="left-panel" class="left-panel">
+            <nav class="navbar navbar-expand-sm navbar-default">
+
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="./">
+                        <p></p>
+                    </a>
+                </div>
+
+                <div id="main-menu" class="main-menu collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class=" active ">
+                            <a href="/"> <i class="menu-icon fa fa-home"></i>Trang chủ </a>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </nav>
+        </aside><!-- /#left-panel -->
+
+        <!-- Left Panel -->
+
+        <!-- Right Panel -->
+
+        <div id="right-panel" class="right-panel">
+
+            <!-- Header-->
+            <header id="header" class="header bg-light text-dark">
+
+                <div class="header-menu ">
+
+                    <div class="col-sm-3">
+                        <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                        <div class="header-left">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 badge ">
+                        <h3 class="">GIẢI BÓNG ĐÁ VÔ ĐỊCH QUỐC GIA</h3>
+                    </div>
+                </div>
+
+            </header><!-- /header -->
+            <!-- Header-->
+
+            <div class="breadcrumbs">
+                <div class="col-sm-4">
+                    <div class="page-header float-left">
+                        <div class="page-title">
+                            <h1>
+                                 Trang chủ
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="page-header float-right">
+                        <div class="page-title">
+                            <ol class="breadcrumb text-right">
+                                <li class="active">Trang chủ</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content mt-3">
+                <div class="col-sm-12">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <span class="badge badge-pill badge-success">Hồ sơ giải đấu</span>
+                        <a th:href=@{/add-season}> <i class="fa fa-plus-square close" id="addSeasonButton"></i></a>
+                    </div>
+                </div>
+
+                <div id="seasons-container">
+                    
+                </div>
+            </div> <!-- .content -->
+        </div><!-- /#right-panel -->
+
+        <!-- Right Panel -->
+        <script th:src="@{js/season/getAllSeasons.js}"></script>
+        <script th:src="@{public/vendors/jquery/dist/jquery.min.js}"></script>
+        <script th:src="@{public/vendors/popper.js/dist/umd/popper.min.js}"></script>
+        <script th:src="@{public/vendors/bootstrap/dist/js/bootstrap.min.js}"></script>
+        <script th:src="@{public/assets/js/main.js}"></script>
+        <script th:src="@{https://kit.fontawesome.com/4b2d0b352c.js}"></script>
+    </body>
+    </html>

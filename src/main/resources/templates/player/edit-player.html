@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="html_head">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quản lý giải bóng đá vô địch quốc gia</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" th:href="@{public/vendors/bootstrap/dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{public/vendors/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{public/assets/css/style.css}">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+
+
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/css/fileinput.min.css">
+</head>
+
+<body>
+
+    <!-- Left Panel -->
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
+                    aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <p></p>
+                </a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="">
+                        <a href="/"> <i class="menu-icon fa fa-home"></i>Trang chủ </a>
+                    </li>
+
+                    <h3 class="menu-title">Hồ sơ Mùa giải</h3><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Đội bóng</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-list"></i><a href="/club/list/6641f9fa0bf88a28c4d83372">Danh sách các
+                                    đội</a></li>
+                            <li><i class="fa fa-id-badge"></i><a href="/club/add/6641f9fa0bf88a28c4d83372">Đăng ký đội
+                                    bóng</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown  active ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"> <i class="menu-icon fa fa-user"></i>Cầu thủ</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-search"></i><a href="/player/lookup/6641f9fa0bf88a28c4d83372">Tra cứu
+                                    cầu thủ</a></li>
+                            <li><i class="fa fa-plus-square"></i><a href="/player/add/6641f9fa0bf88a28c4d83372">Đăng ký
+                                    cầu thủ</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"> <i class="menu-icon fa fa-calendar"></i>Lịch thi đấu</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-calendar-alt"></i><a
+                                    href="/fixture/fixture-detail/1&amp;6641f9fa0bf88a28c4d83372">Xem lịch thi đấu</a>
+                            </li>
+                            <li><i class="menu-icon fa fa-plus-square"></i><a
+                                    href="/fixture/add-fixture/6641f9fa0bf88a28c4d83372">Lập lịch thi đấu</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"> <i class="menu-icon fa fa-paste"></i>Kết quả vòng đấu</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-plus-square"></i><a
+                                    href="/result/add-result/6641f9fa0bf88a28c4d83372">Ghi nhận kết quả</a></li>
+                            <li><i class="menu-icon fa fa-list-alt"></i><a
+                                    href="/result/result-detail/6641f9fa0bf88a28c4d83372">Xem kết quả</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Báo cáo</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th-list"></i><a
+                                    href="/baocao/bxh/6641f9fa0bf88a28c4d83372">Bảng xếp hạng</a></li>
+                            <li><i class="menu-icon fa fa-list-ol"></i><a
+                                    href="/baocao/ghiban/6641f9fa0bf88a28c4d83372">Danh sách ghi bàn</a></li>
+                            <li><i class="menu-icon fa fa-list"></i><a
+                                    href="/baocao/kientao/6641f9fa0bf88a28c4d83372">Danh sách kiến tạo</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="/dieule/edit" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"> <i class="menu-icon fa fa-file-alt"></i>Điều lệ giải</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-edit"></i><a
+                                    href="/dieule/info/6641f9fa0bf88a28c4d83372&amp;false">Thay đổi quy định</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header bg-light text-dark">
+
+            <div class="header-menu ">
+
+                <div class="col-sm-3">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                    </div>
+                </div>
+
+                <div class="col-sm-6 badge ">
+                    <h3 class="">GIẢI BÓNG ĐÁ VÔ ĐỊCH QUỐC GIA</h3>
+                </div>
+            </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>
+
+
+                            Cầu thủ
+
+
+
+
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li class="active">Cập nhật cầu thủ</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Thông tin cầu thủ</strong>
+                            </div>
+                            <div class="card-body card-block">
+                                <form id="registerForm"
+                                    action="/player/edit/6641fb8db38506368c7d62c0&amp;6641f9fa0bf88a28c4d83372"
+                                    method="POST" class="form-horizontal">
+
+                                    <div class="row form-group">
+                                        <div class="col-12 col-md-12">
+                                            <label for="tenCauThu" class=" form-control-label ">Tên cầu
+                                                thủ</label>
+                                            <input type="text" id="tenCauThu" name="tenCauThu" class="form-control"
+                                                required="required" value="Lê Công Vinh">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-12 col-md-12">
+                                            <label for="loaiCauThu" class=" form-control-label ">Loại cầu thủ</label>
+                                            <select id="loaiCauThu" name="loaiCauThu" class="form-control"
+                                                required="required">
+                                                <option value="1" selected="">Cầu thủ nội</option>
+                                                <option value="0">Cầu thủ ngoại</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-12 col-md-12">
+                                            <label for="viTriThiDau" class=" form-control-label ">Vị trí thi đấu</label>
+                                            <!-- <input type="text" id="loaicauthu" name="loaicauthu" class="form-control"> -->
+                                            <select id="viTriThiDau" name="viTriThiDau" class="form-control"
+                                                required="required">
+                                                <option value="1">Thủ môn</option>
+                                                <option value="2">Hậu vệ</option>
+                                                <option value="3">Tiền vệ</option>
+                                                <option value="4" selected="">Tiền đạo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-12 col-md-12">
+                                            <label for="quocTich" class=" form-control-label ">Quốc tịch</label>
+                                            <input type="text" id="quocTich" name="quocTich" class="form-control"
+                                                required="required" value="Việt Nam">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtDOB">Ngày sinh</label>
+                                        <input type="text" class="form-control" id="txtDOB" name="dob"
+                                            value="13/01/1985">
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-12 col-md-12">
+                                            <label for="doiBong" class=" form-control-label ">Đội bóng</label>
+
+                                            <select id="doiBong" name="doiBong" class="form-control">
+
+
+
+                                                <option value="6641fae9b38506368c7d62b9" selected="">Hà Nội FC
+                                                </option>
+                                                <option value="6641feff76c195224827c3ce">HAGL
+                                                </option>
+
+
+
+
+                                                <option value="66421d5310b4a2385ccb6bee">Đà Nẵng
+                                                </option>
+                                                <option value="66421d7e10b4a2385ccb6bf0">Hải Phòng
+                                                </option>
+
+
+
+
+                                                <option value="664234fc6e2d8a2acc90afe8">Huế
+                                                </option>
+
+
+
+
+                                                <option value="664235bf4ba7e50b5c8ac441">Sông Lam Nghệ An
+                                                </option>
+
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-2 "><label for="sobanthang"
+                                                class=" form-control-label ">Số bàn
+                                                thắng</label>
+                                        </div>
+                                        <div class="col-12 col-md-3">
+                                            <input type="number" name="sobanthang" id="sobanthang" class="form-control"
+                                                value="0">
+                                        </div>
+                                        <div class="col col-md-1"></div>
+                                        <div class="col col-md-2 "><label for="sokientao"
+                                                class=" form-control-label ">Số kiến
+                                                tạo</label>
+                                        </div>
+                                        <div class="col-12 col-md-3">
+                                            <input type="number" name="sokientao" id="sokientao" class="form-control"
+                                                value="0">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-2 "><label for="sothevang"
+                                                class=" form-control-label ">Số thẻ
+                                                vàng</label>
+                                        </div>
+                                        <div class="col-12 col-md-3">
+                                            <input type="number" name="sothevang" id="sothevang" class="form-control"
+                                                value="0">
+                                        </div>
+                                        <div class="col col-md-1"></div>
+                                        <div class="col col-md-2 "><label for="#" class=" form-control-label ">Số thẻ
+                                                đỏ</label>
+                                        </div>
+                                        <div class="col-12 col-md-3">
+                                            <input type="number" name="sothedo" id="sothedo" class="form-control"
+                                                value="0">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" form="registerForm" class="btn btn-primary btn-sm" onclick="">
+                                    <i class="fa fa-check"></i> Cập nhật
+                                </button>
+                                <button type="reset" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-ban"></i> Hủy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- .content -->
+    </div><!-- /#right-panel -->
+
+    <!-- Right Panel -->
+
+    <script th:src="@{public/vendors/jquery/dist/jquery.min.js}"></script>
+    <script th:src="@{public/vendors/popper.js/dist/umd/popper.min.js}"></script>
+    <script th:src="@{public/vendors/bootstrap/dist/js/bootstrap.min.js}"></script>
+    <script th:src="@{public/assets/js/main.js}"></script>
+    <script src="https://kit.fontawesome.com/4b2d0b352c.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+
+    <script th:src="@{public/assets/js/add.player.validation.js}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/js/fileinput.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/themes/fa/theme.min.js"></script>
+
+    <script th:src="@{public/assets/js/upload.img.js}"></script>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="html_head">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quản lý giải bóng đá vô địch quốc gia</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/thongtindoi.css}">
+    <link rel="stylesheet" th:href="@{public/vendors/bootstrap/dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{public/vendors/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{public/assets/css/style.css}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/css/fileinput.min.css}">
+    <link rel="stylesheet" th:href="@{public/vendors/chosen/chosen.min.css}">
+</head>
+<body>
+
+    <!-- Left Panel -->
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
+                    aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <p></p>
+                </a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class=" active ">
+                        <a href="/"> <i class="menu-icon fa fa-home"></i>Trang chủ </a>
+                    </li>
+
+                    <h3 class="menu-title">Hồ sơ Mùa giải</h3>
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Đội bóng</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-list"></i><a th:href="@{/list-club}">Danh sách các
+                                    đội</a></li>
+                            <li><i class="fa fa-id-badge"></i><a th:href="@{/add-club}">Đăng ký đội
+                                    bóng</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"> <i class="menu-icon fa fa-user"></i>Cầu thủ</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-search"></i><a th:href="@{/list-player}">Tra cứu
+                                    cầu thủ</a></li>
+                            <li><i class="fa fa-plus-square"></i><a th:href="@{/list-player}">Đăng ký
+                                    cầu thủ</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"> <i class="menu-icon fa fa-calendar"></i>Lịch thi đấu</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-calendar-alt"></i><a
+                                    href="/fixture/fixture-detail/1&amp;6641f9fa0bf88a28c4d83372">Xem lịch thi đấu</a>
+                            </li>
+                            <li><i class="menu-icon fa fa-plus-square"></i><a
+                                    href="/fixture/add-fixture/6641f9fa0bf88a28c4d83372">Lập lịch thi đấu</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"> <i class="menu-icon fa fa-paste"></i>Kết quả vòng đấu</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-plus-square"></i><a
+                                    href="/result/add-result/6641f9fa0bf88a28c4d83372">Ghi nhận kết quả</a></li>
+                            <li><i class="menu-icon fa fa-list-alt"></i><a
+                                    href="/result/result-detail/6641f9fa0bf88a28c4d83372">Xem kết quả</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Báo cáo</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th-list"></i><a
+                                    href="/baocao/bxh/6641f9fa0bf88a28c4d83372">Bảng xếp hạng</a></li>
+                            <li><i class="menu-icon fa fa-list-ol"></i><a
+                                    href="/baocao/ghiban/6641f9fa0bf88a28c4d83372">Danh sách ghi bàn</a></li>
+                            <li><i class="menu-icon fa fa-list"></i><a
+                                    href="/baocao/kientao/6641f9fa0bf88a28c4d83372">Danh sách kiến tạo</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="/dieule/edit" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"> <i class="menu-icon fa fa-file-alt"></i>Điều lệ giải</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-edit"></i><a
+                                    href="/dieule/info/6641f9fa0bf88a28c4d83372&amp;false">Thay đổi quy định</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+        <div class="content" >
+          <div id="team-details-container" >
+
+          </div>
+            <div class="player-list">
+                <div class="add-player">
+                    <button id="add-player-btn" onclick="showPlayerForm()">Thêm cầu thủ</button>
+                </div>
+                <div id="player-form" style="display: none;">
+                    <form action="" id="new-player">
+                            <label for="player-name">Tên cầu thủ</label>
+                        <div class="form-group">
+
+                            <input type="text" class="form-input" id="player-name" placeholder="Tên cầu thủ">
+                        </div>
+                        <label for="player-type">Loại cầu thủ</label>
+                        <div class="form-group">
+
+                            <input type="text" class="form-input" id="player-type" placeholder="Nội binh/ Ngoại binh">
+                        </div>
+                        <label for="player-position">Vị trí thi đấu</label>
+                        <div class="form-group">
+                            <input type="text" class="form-input" id="player-position" placeholder="Vị trí ">
+                        </div>
+                        <label for="player-nationality">Quốc tịch</label>
+                        <div class="form-group">
+
+                            <input type="text" class="form-input" id="player-nationality" placeholder=" ">
+                        </div>
+                        <label for="player-dob">Ngày tháng năm sinh</label>
+                        <div class="form-group">
+                            <input type="date" class="form-input" id="player-dob" placeholder="__/__/____ ">
+                        </div>
+                        <label for="player-image">Hình ảnh</label>
+                        <div class="form-group">
+                            <input type="file" class="form-input" id="player-image" placeholder="Select files" >
+                        </div>
+                        <div class="container-submit-reset">
+                            <div class="form-submit">
+                                <input type="submit" style="background-color: #54a0ff; border: none;" value="Đăng ký" >
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <table 'players-container' >
+                    <thead>
+                        <tr>
+                            <th>Tên cầu thủ</th>
+                            <th>Vị trí</th>
+                            <th>Ngày sinh</th>
+                        </tr>
+                    </thead>
+                    <tbody id = "players-container">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        // JavaScript để hiển thị form đăng ký cầu thủ
+        function showPlayerForm() {
+            var playerForm = document.getElementById("player-form");
+            playerForm.style.display = "block"; // Hiển thị form
+
+            // Thêm sự kiện click vào body để ẩn form khi click bên ngoài
+            document.body.addEventListener("click", function(event) {
+                // Kiểm tra xem phần click có là form hoặc button "Thêm cầu thủ" không
+                if (event.target.closest("#player-form") || event.target.closest("#add-player-btn")) {
+                    return; // Nếu là form hoặc button thì không làm gì cả
+                } else {
+                    // Nếu không phải là form hoặc button, ẩn form
+                    playerForm.style.display = "none";
+                }
+            });
+        }
+
+        // JavaScript để ẩn form đăng ký cầu thủ
+        function hidePlayerForm() {
+            var playerForm = document.getElementById("player-form");
+            playerForm.style.display = "none"; // Ẩn form
+        }
+
+        // Assuming your backend API expects data in JSON format
+function submitPlayerForm() {
+  event.preventDefault(); // Prevent default form submission behavior
+
+  const playerName = document.getElementById("player-name").value;
+  const playerType = document.getElementById("player-type").value;
+  const playerPosition = document.getElementById("player-position").value;
+  const playerNationality = document.getElementById("player-nationality").value;
+  const playerDob = document.getElementById("player-dob").value;
+  console.log(id)
+  // Handle potential file upload logic for player image (if applicable)
+
+  const playerData = {
+    "ten_cau_thu": playerName, // Modify names as needed based on your API
+    "loai_cau_thu": playerType,
+    "vi_tri_thi_dau": playerPosition,
+    "quoc_tich": playerNationality,
+    "ngay_sinh": playerDob,
+    "id_doi_bong": id,
+    // Add image data if applicable
+  };
+
+  const baseUrl = 'http://localhost:8089/api/players'; // Replace with your actual API endpoint
+
+  fetch(baseUrl, {
+    method: 'POST', // Use POST for creating new players
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(playerData)
+  })
+  .then(response => {
+    if (response.ok) {
+      console.log('Player created successfully!');
+      // Clear the form after successful submission
+      document.getElementById("new-player").reset();
+      // Optionally, display a success message to the user
+      setTimeout(() => {
+        window.location.reload(); // Reload after a slight delay to allow UI updates
+      }, 1000);
+    } else {
+      console.error('Error creating player:', response.statusText);
+      // Handle errors, e.g., display an error message to the user
+    }
+  });
+}
+
+const submitButton = document.querySelector('#new-player input[type="submit"]');
+submitButton.addEventListener('click', submitPlayerForm);
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../js/js.js"></script>
+    <script src="../js/club/detail-team.js"></script>
+</body>
+</html>

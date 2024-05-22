@@ -1,0 +1,326 @@
+@charset "UTF-8";
+body {
+  font-family: 'Roboto Slab', serif;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 100px 500px 100px;
+  grid-template-columns: 240px 1277px;
+  grid-template-areas: 
+  "header header"
+  "sidebar content"
+  "sidebar content"
+  "sidebar content"
+  "footer footer";
+}
+
+.header { 
+  grid-area: header;
+  text-align: center;
+  background-color: darkgreen;
+  color: white;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: rgb(37, 36, 36);
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: aliceblue;
+  text-align: center;
+}
+
+.sidebar-mot {
+  position: relative;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.menu {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.item {
+  position: relative;
+  cursor: pointer;
+  border-bottom: 1px solid rgb(19, 19, 19);
+}
+
+.item i {
+  margin-left: 0px; /* Sửa giá trị này từ "0ox" thành "0px" */
+  margin-right: 15px;
+}
+
+.item a {
+  text-align: left;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid rgb(19, 19, 19);
+  padding: 5px 30px;
+  line-height: 60px;
+}
+
+.item a .dropdown {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  transition: 0.3s ease; /* Sửa giá trị này từ "0,3" thành "0.3" */
+}
+
+.sub-menu {
+  background-color: rgba(82, 80, 80, 0.529);
+  display: none;
+}
+
+.content {
+  grid-area: content;
+  padding: 20px;
+}
+
+.content-head {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edit-button {
+  background-color: #4D869C;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.team-info {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.info-left {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.info-left h2 {
+  margin-bottom: 10px;
+}
+
+#team-info-form {
+  margin-bottom: 20px;
+}
+
+#team-info-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#team-info-form input {
+  width: calc(100% - 20px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-buttons {
+  text-align: right;
+}
+
+#edit-button,
+#update-button {
+  background-color: #4D869C;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#update-button {
+  margin-left: 10px;
+}
+
+
+.info-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-right img {
+  width: 200px; /* Độ rộng ảnh */
+  height: auto; /* Chiều cao tự động điều chỉnh */
+  border-radius: 10px; /* Đường viền cong */
+}
+
+
+.add-player {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.add-button {
+  background-color: #7AB2B2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.player-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.player-list th, .player-list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.player-list th {
+  background-color: #EEF7FF;
+  color: #4D869C;
+}
+
+.player-list tbody tr:nth-child(even) {
+  background-color: #CDE8E5;
+}
+
+.player-list tbody tr:hover {
+  background-color: #7AB2B2;
+  color: white;
+}
+
+/* CSS cho phần form đăng ký cầu thủ */
+/* CSS cho phần form đăng ký cầu thủ */
+#player-form {
+  position: absolute; /* Đặt vị trí tuyệt đối */
+  top: 50%; /* Đặt ở giữa theo chiều dọc */
+  left: 50%; /* Đặt ở giữa theo chiều ngang */
+  transform: translate(-50%, -50%); /* Dịch chuyển để căn giữa */
+  background-color: #fff; /* Màu nền */
+  padding: 20px; /* Khoảng cách lề bên trong */
+  border-radius: 10px; /* Đường viền cong */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+  z-index: 999; /* Đặt độ ưu tiên hiển thị (cao hơn so với phần còn lại của trang) */
+  display: none; /* Ẩn form ban đầu */
+}
+
+/* CSS cho nút "Thêm cầu thủ" */
+#add-player-btn {
+  background-color: #54a0ff; /* Màu nền */
+  color: #fff; /* Màu chữ */
+  border: none; /* Bỏ viền */
+  padding: 10px 20px; /* Kích thước */
+  border-radius: 5px; /* Đường viền cong */
+  cursor: pointer; /* Con trỏ khi di chuột */
+}
+
+#add-player-btn:hover {
+  background-color: #3676e0; /* Màu nền khi di chuột qua */
+}
+
+/* CSS cho phần form buttons */
+.form-buttons {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.form-buttons button {
+  background-color: #54a0ff;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-buttons button:hover {
+  background-color: #3676e0;
+}
+/* CSS cho form đăng ký cầu thủ */
+#new-player {
+  max-width: 400px; /* Độ rộng tối đa của form */
+  margin: 0 auto; /* Căn giữa */
+  padding: 20px; /* Khoảng cách lề bên trong */
+  border: 1px solid #ccc; /* Đường viền */
+  border-radius: 5px; /* Đường viền cong */
+  background-color: #f9f9f9; /* Màu nền */
+}
+
+#new-player label {
+  display: block; /* Hiển thị mỗi label trên một dòng */
+  margin-bottom: 5px; /* Khoảng cách giữa các label */
+}
+
+#new-player .form-group {
+  margin-bottom: 15px; /* Khoảng cách giữa các form group */
+}
+
+#new-player .form-input {
+  width: 100%; /* Chiều rộng 100% */
+  padding: 8px; /* Kích thước padding */
+  border: 1px solid #ccc; /* Đường viền */
+  border-radius: 4px; /* Đường viền cong */
+}
+
+#new-player .container-submit-reset {
+  text-align: center; /* Căn giữa nút submit và reset */
+}
+
+#new-player .form-submit input[type="submit"],
+#new-player .form-reset input[type="reset"] {
+  background-color: #54a0ff; /* Màu nền */
+  color: #fff; /* Màu chữ */
+  border: none; /* Bỏ viền */
+  padding: 8px 20px; /* Kích thước padding */
+  border-radius: 4px; /* Đường viền cong */
+  cursor: pointer; /* Con trỏ khi di chuột */
+}
+
+#new-player .form-submit input[type="submit"]:hover,
+#new-player .form-reset input[type="reset"]:hover {
+  background-color: #3676e0; /* Màu nền khi di chuột qua */
+}
+/* CSS cho nút cập nhật */
+.update-button {
+  background-color: #4CAF50; /* Màu nền */
+  color: white; /* Màu chữ */
+  border: none; /* Không có viền */
+  padding: 8px 12px; /* Kích thước padding */
+  text-align: center; /* Căn chỉnh văn bản vào giữa */
+  text-decoration: none; /* Không gạch chân cho văn bản */
+  margin-right: 5px; /* Khoảng cách bên phải */
+  cursor: pointer;
+}
+
+/* CSS cho nút xóa */
+.delete-button {
+  background-color: #f44336; /* Màu nền */
+  color: white; /* Màu chữ */
+  border: none; /* Không có viền */
+  padding: 8px 12px; /* Kích thước padding */
+  text-align: center; /* Căn chỉnh văn bản vào giữa */
+  text-decoration: none; /* Không gạch chân cho văn bản */
+  margin-left: 5px; /* Khoảng cách bên trái */
+  cursor: pointer;
+}
+ 
+.action-cell {
+  padding: 15px; /* Điều chỉnh kích thước của ô */
+  margin: 10px;
+}
+
+
+
